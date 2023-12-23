@@ -15,11 +15,9 @@ import com.webapp.service.RegistrationService;
 
 @Controller
 public class RegistrationController {
-@Autowired
+	@Autowired
 	private RegistrationService registrationService;
-	
-	
-	//http://localhost:8080/view-registration-page
+//http://localhost:8080/view-registration-page
 	//Handler Method
 	@RequestMapping("/view-registration-page")
 	public String viewsRegistrationPage() {
@@ -79,8 +77,43 @@ public class RegistrationController {
 	@RequestMapping("/getAllReg")
 	public String getAllRegistrations(ModelMap model) {
 		List<Registration> reg = registrationService.getAllRegistrations();
-		System.out.println(reg);
 		model.addAttribute("registrations", reg);
 		return"list_registrations";
+	}
+	@RequestMapping("/delete")
+  public String deleteRegById(@RequestParam("id") long id, ModelMap model ) {
+		registrationService.deleteRegById(id);
+		List<Registration> reg = registrationService.getAllRegistrations();
+		model.addAttribute("registrations", reg);
+		return"list_registrations";
+	}
+	@RequestMapping("/getRegistrationById")
+	public String getRegistrationById(@RequestParam("id")long id, ModelMap model) {
+		Registration registration = registrationService.getRegistrationById(id);
+		model.addAttribute("reg", registration);
+		return"update_registration";
+		
+	}
+	
+	@RequestMapping("/updateReg")
+	public String updateRegistration(
+			
+			RegistrationDto dto,
+			ModelMap model
+
+			
+			) {
+		
+         Registration registration = new Registration();
+         registration.setId(dto.getId());
+         registration.setFirstName(dto.getFirstName());
+         registration.setLastName(dto.getLastName());
+         registration.setEmail(dto.getEmail());
+         registration.setMobile(dto.getMobile());
+         registrationService.saveRegistration(registration);
+         List<Registration> reg = registrationService.getAllRegistrations();
+ 		model.addAttribute("registrations", reg);
+ 		return"list_registrations";
+		
 	}
 }
