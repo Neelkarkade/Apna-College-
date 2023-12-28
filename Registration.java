@@ -1,6 +1,9 @@
 package com.webapp.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -10,13 +13,14 @@ public class Registration {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 
 private long id;
-	
+	@NotEmpty
+	@Size(min = 2,message = "minmumm 2 charcter")
 @Column(name ="first_name",length = 45)
 private String firstName;//first_name
 	
 @Column(name ="lastName",length = 45)
 private String lastName;
-
+@Email
 @Column(name ="email",unique = true,  length = 128)
 private String email;
 
