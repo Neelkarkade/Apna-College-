@@ -69,7 +69,7 @@ public class RegistrationController {
 		
          Registration registration = new Registration();
          registration.setFirstName(dto.getFirstName());
-         registration.setLastName(dto.getLastName());
+//         registration.setLastName(dto.getLastName());
          registration.setEmail(dto.getEmail());
          registration.setMobile(dto.getMobile());
 
@@ -100,25 +100,25 @@ public class RegistrationController {
 		
 	}
 	
-	@RequestMapping("/updateReg")
-	public String updateRegistration(
-			
-			RegistrationDto dto,
-			ModelMap model
-
-			
-			) {
-		
-         Registration registration = new Registration();
-         registration.setId(dto.getId());
-         registration.setFirstName(dto.getFirstName());
-         registration.setLastName(dto.getLastName());
-         registration.setEmail(dto.getEmail());
-         registration.setMobile(dto.getMobile());
-         registrationService.saveRegistration(registration);
-         List<Registration> reg = registrationService.getAllRegistrations();
- 		model.addAttribute("registrations", reg);
- 		return"list_registrations";
-		
-	}
+//	@RequestMapping("/updateReg")
+//	public String updateRegistration(
+//			
+//			RegistrationDto dto,
+//			ModelMap model
+//
+//			
+//			) {
+//		
+ //        Registration registration = new Registration();
+ //        registration.setId(dto.getId());
+//         registration.setFirstName(dto.getFirstName());
+//         registration.setLastName(dto.getLastName());
+//         registration.setEmail(dto.getEmail());
+ //        registration.setMobile(dto.getMobile());
+ //        registrationService.saveRegistration(registration);
+ //        List<Registration> reg = registrationService.getAllRegistrations();
+ //		model.addAttribute("registrations", reg);
+ //		return"list_registrations";
+//		
+//	}
 }
