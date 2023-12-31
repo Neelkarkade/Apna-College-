@@ -1,9 +1,11 @@
-package p2;
+package p1;
 
-import p1.A;
+public class B extends A1{
+    public static void main(String[]args){
+    	B b1 = new B();
+    	b1.test1();
+    
+	}
 
-public class B {
-public static void main(String[]args){
-A a1 = new A();
-}
-}
+	
+	}
